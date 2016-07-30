@@ -1,8 +1,10 @@
 
+#微信hook
 <p>很久之前我的老师说过，他的朋友圈每天都有新款的bra，每天都像发现新大陆.....(此处省略一点点字)</p>
-<div style="width:191px;margin:0 auto;padding-bottom:15px;margin-top:-15px;">
-<img src="http://7xrlno.com1.z0.glb.clouddn.com/93763916-B1C6-4987-8D7F-FBD887919781.png" />
+<div>
+<img src="http://7xrlno.com1.z0.glb.clouddn.com/93763916-B1C6-4987-8D7F-FBD887919781.png" width="191"/>
 </div>
+
 后来有一天，我的朋友圈也有了这东西，单纯如我，悄悄的点开卖家的头像
 <div style="width:191px;margin:0 auto;margin-top:-20px">
 <img src="http://7xrlno.com1.z0.glb.clouddn.com/76634698-CC69-4064-9F26-6A17F3B788FB.jpg" />
@@ -10,9 +12,8 @@
 按下了屏蔽，后面各种广告穿插在朋友圈，每天一条，我忍！但是你每两个小时就要发一条，我只好狠心的屏蔽你了  
 
 作为一个零零后，我们该如何优雅的打广告，当朋友圈已经容不下我们卖萌，我们只能寻找另一个地方装x，比如微信运动：
-
-<div style="width:191px;margin:0 auto;padding-bottom:30px;margin-top:0px;">
-<img src="http://7xrlno.com1.z0.glb.clouddn.com/IMG_3882.PNG"  alt="图片名称" />
+<div>
+<img src="http://7xrlno.com1.z0.glb.clouddn.com/IMG_3882.PNG"  width="191" />
 </div>  
 
 用一张笔者的自拍成功的占领了一次封面，换个思路，假若这是一张广告的图片呢（上面有各种各样的bra），现在大多数人都启用了微信运动（只要极个别的人怕打开了之后，每天去哪都被发现了），每天晚上十点，微信会推一条步数排行的信息给用户，我们弄点黑科技，修改下我们的步数，只要微信一推送，就相当于在给我们推广告
@@ -42,8 +43,8 @@
 	笔者自己也是参照[一步一步实现iOS微信自动抢红包(非越狱)](http://www.jianshu.com/p/189afbe3b429)来砸壳的，此处只对笔者遇到的一些坑做记录：
 	 - 砸壳之后，会生成`WeChat.decrypted`文件，我们需要将其拷贝到我们电脑，操作如下:  
 		 1. 打开系统设置->共享->勾上远程登录
-	<div style="width:70%;margin:0 auto;padding-bottom:30px;margin-top:-15px">
-<img src=" http://7xrlno.com1.z0.glb.clouddn.com/5AF02739-2263-46FD-A0C3-3A0FA3036BFE.png.jpeg"/>
+	<div>
+<img src="http://7xrlno.com1.z0.glb.clouddn.com/5AF02739-2263-46FD-A0C3-3A0FA3036BFE.png.jpeg" width="70%"/>
 	</div>  
 		
 		 2. 使用`scp`拷贝到电脑  
@@ -63,7 +64,7 @@
 		      
 		只有`armv7`架构是解密的，另一个`arm64`还是加密状态，此处我们需要抽出`armv7`架构，否则后面重签名安装后会闪退:  
 		`lipo WeChat -thin armv7 -output WeChat_armv7`
- --- 
+--- 
 
 ###重签名
 我们最终的目的是给微信加上修改步数，抢红包的功能，但这一切的前提必须是，能够成功安装改版后的微信，并且成功打开，所以，我们并不急着给微信加功能，重签名这一步完成后，基本就没有什么大坑了
@@ -73,8 +74,8 @@
 通过Xcode创建一个作为壳子的项目，要使用有开发权限的`bundle Id`
 任意取名，选好你的证书描述文件，然后编译。会生成一个`Mytest1.app`
 
-<div style="width:70%;margin:0 auto;padding-bottom:15px;">
-<img src="http://7xrlno.com1.z0.glb.clouddn.com/e30a91e0-6cd4-4791-ba7b-c78ed29c824b.png"/>
+<div >
+<img src="http://7xrlno.com1.z0.glb.clouddn.com/e30a91e0-6cd4-4791-ba7b-c78ed29c824b.png" width="70%"/>
 	</div>  
 
 我们需要这个Mytest1.app文件中的`embedded.mobileprovision`   
@@ -102,8 +103,8 @@
 	</dict>
 	</plist>
 
-<div style="width:70%;margin:0 auto;padding-bottom:15px;">
-<img src="http://7xrlno.com1.z0.glb.clouddn.com/d878d60f-1e55-4069-a209-242ec81ca970.png"/>
+<div >
+<img src="http://7xrlno.com1.z0.glb.clouddn.com/d878d60f-1e55-4069-a209-242ec81ca970.png" width="70%"/>
 	</div>  
 
 所有需要的文件都已经生成，然后把`embedded.mobileprovision` 和`WeChat`二进制文件拷贝至`WeChat.app`中替换。
@@ -119,7 +120,7 @@
 安装:  
 我使用pp助手安装，你也可以选择其他方式，若安装后成功打开微信，恭喜你，还差一步就成功了
 
- ---
+---
 
 ###注入新功能
 
@@ -165,8 +166,8 @@
 
 再根据上面的重签名走一次，安装，若在iphone上成功打开，我们的工作已经完成，接下来，只要：  
 
-<div style="width:191px;margin:0 auto;padding-bottom:15px;">
-<img src="http://7xrlno.com1.z0.glb.clouddn.com/IMG_3907.PNG"/>
+<div >
+<img src="http://7xrlno.com1.z0.glb.clouddn.com/IMG_3907.PNG" width="191"/>
 	</div>  
 
 
