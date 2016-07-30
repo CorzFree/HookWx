@@ -61,7 +61,9 @@
 		      cryptid 1  
 		      
 		只有`armv7`架构是解密的，另一个`arm64`还是加密状态，此处我们需要抽出`armv7`架构，否则后面重签名安装后会闪退:  
-		`lipo WeChat -thin armv7 -output WeChat_armv7`
+		`lipo WeChat -thin armv7 -output WeChat_armv7`  
+  
+  
 --- 
 
 ###重签名
